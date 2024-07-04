@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  web_crawler:
+    build: .
+    container_name: web_crawler
+    depends_on:
+      - mongo
+    volumes:
+      - .:/app
+    command: ["tail", "-f", "/dev/null"]
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
